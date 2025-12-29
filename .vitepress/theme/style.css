@@ -1,0 +1,117 @@
+/* =========================================
+   1. PAKSA LEBAR LAYOUT (ANTI-700PX)
+   ========================================= */
+
+:root {
+  /* Timpa variabel lebar bawaan */
+  --vp-layout-max-width: 100% !important;
+}
+
+/* Selector ini menargetkan container utama di semua ukuran layar */
+.VPDoc .container,
+.VPContent .container,
+.VPContent .content-container {
+  max-width: 100% !important; /* HAPUS BATAS 700PX */
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 40px !important; /* Beri jarak kiri-kanan agar rapi */
+}
+
+/* Khusus layar besar (Desktop), seringkali VitePress me-reset di sini */
+@media (min-width: 960px) {
+  .VPDoc .container {
+    max-width: 100% !important;
+    width: auto !important;
+  }
+}
+
+/* Khusus layar HP, kurangi padding */
+@media (max-width: 768px) {
+  .VPDoc .container {
+    padding: 0 20px !important;
+  }
+}
+
+/* =========================================
+   2. TABEL: UNLIMITED & SCROLL (SAMA SEPERTI TADI)
+   ========================================= */
+
+.vp-doc table {
+  display: block;       
+  overflow-x: auto;     
+  width: 100%;
+  white-space: nowrap; /* Mencegah teks turun ke bawah */
+  
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: none;
+  scrollbar-width: thin;
+}
+
+.vp-doc table th {
+  background-color: var(--vp-c-brand);
+  color: white;
+  padding: 12px 24px;
+  text-align: left;
+  border: none;
+  font-weight: 600;
+}
+
+.vp-doc table td {
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc table tr:nth-child(even) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc table tr:hover td {
+  background-color: var(--vp-c-bg-mute);
+}
+
+/* =========================================
+   3. FIX: KHUSUS TABEL 1 KOLOM
+   agar text turun ke bawah (wrap) & tidak scroll
+   ========================================= */
+
+/* Target: Sel (td/th) yang merupakan anak tunggal dalam barisnya */
+.vp-doc table tr > *:only-child {
+  white-space: normal !important; /* Izinkan teks turun ke baris baru */
+  word-wrap: break-word;          /* Patahkan kata jika terlalu panjang */
+  overflow-wrap: break-word;      /* Dukungan browser modern */
+  min-width: 100%;                /* Pastikan memenuhi lebar container */
+}
+
+/* Custom Scrollbar */
+.vp-doc table::-webkit-scrollbar { height: 8px; }
+.vp-doc table::-webkit-scrollbar-track { background: var(--vp-c-bg-soft); }
+.vp-doc table::-webkit-scrollbar-thumb { background-color: var(--vp-c-brand); border-radius: 4px; }
+
+/* Mencegah seleksi teks di seluruh website */
+body {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE10+/Edge */
+  user-select: none;         /* Standard */
+}
+
+/* Pengecualian: Biarkan user bisa ngetik di kolom pencarian/input */
+input, textarea {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+/* .vp-doc adalah class pembungkus konten artikel di VitePress */
+.vp-doc p {
+  text-align: justify;
+  
+  /* Opsional: Mengaktifkan pemenggalan kata otomatis agar spasi tidak bolong-bolong */
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto; 
+}
