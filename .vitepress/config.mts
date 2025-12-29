@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import SIDEBAR_PPP_V_1_0 from "./sidebar-book-ppp-v1.js";
 import SIDEBAR_BDD_V_1_0 from "./sidebar-book-bdd-v1.js";
+import SIDEBAR_RESEARCH_CODE_SEARCH from "./sidebar-research-code-search.js";
 
 export default defineConfig({
   title: "MRF",
@@ -121,6 +122,7 @@ export default defineConfig({
 
       "/book-ppp/v-1-0/": [...SIDEBAR_PPP_V_1_0],
       "/book-bdd/v-1-0/": [...SIDEBAR_BDD_V_1_0],
+      "/research-codesearch/": [...SIDEBAR_RESEARCH_CODE_SEARCH],
     },
 
     socialLinks: [{ icon: "github", link: "https://github.com/username/repo-riset" }],

@@ -11,10 +11,10 @@ hero:
   actions:
     - theme: brand
       text: Materi Perkuliahan
-      link: /courses/
+      link: /book-ppp/v-1-0/bab-10/0.html
     - theme: alt
       text: Publikasi Riset
-      link: /research/
+      link: /research-codesearch/introduction.html
 
 features:
   - title: Pengajaran
