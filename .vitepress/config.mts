@@ -23,6 +23,7 @@ export default defineConfig({
 
       "/course-ppp/202501/": [],
       "/course-ppp/202601/": [],
+      "/course-ppp/202602/": [],
 
       "/course-bdd/202501/": [
         {
