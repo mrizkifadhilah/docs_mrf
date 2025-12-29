@@ -29,7 +29,7 @@ features:
 ---
 
 
-
+<!-- 
 ## 🏛️ Mata Kuliah
 Materi dikelompokkan berdasarkan tahun akademik dan semester. 
 *G = Ganjil, Gen = Genap.*
@@ -79,4 +79,4 @@ Penelitian saya saat ini berada di bawah payung **Software Engineering**, dengan
 ---
 
 ## 📑 Publikasi Terkini
-*Segera hadir / Hubungi saya untuk kolaborasi riset.*
+*Segera hadir / Hubungi saya untuk kolaborasi riset.* -->
