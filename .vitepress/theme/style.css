@@ -37,11 +37,11 @@
    ========================================= */
 
 .vp-doc table {
-  display: block;       
-  overflow-x: auto;     
+  display: block;
+  overflow-x: auto;
   width: 100%;
   white-space: nowrap; /* Mencegah teks turun ke bawah */
-  
+
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 14px;
@@ -81,26 +81,34 @@
 /* Target: Sel (td/th) yang merupakan anak tunggal dalam barisnya */
 .vp-doc table tr > *:only-child {
   white-space: normal !important; /* Izinkan teks turun ke baris baru */
-  word-wrap: break-word;          /* Patahkan kata jika terlalu panjang */
-  overflow-wrap: break-word;      /* Dukungan browser modern */
-  min-width: 100%;                /* Pastikan memenuhi lebar container */
+  word-wrap: break-word; /* Patahkan kata jika terlalu panjang */
+  overflow-wrap: break-word; /* Dukungan browser modern */
+  min-width: 100%; /* Pastikan memenuhi lebar container */
 }
 
 /* Custom Scrollbar */
-.vp-doc table::-webkit-scrollbar { height: 8px; }
-.vp-doc table::-webkit-scrollbar-track { background: var(--vp-c-bg-soft); }
-.vp-doc table::-webkit-scrollbar-thumb { background-color: var(--vp-c-brand); border-radius: 4px; }
+.vp-doc table::-webkit-scrollbar {
+  height: 8px;
+}
+.vp-doc table::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-soft);
+}
+.vp-doc table::-webkit-scrollbar-thumb {
+  background-color: var(--vp-c-brand);
+  border-radius: 4px;
+}
 
 /* Mencegah seleksi teks di seluruh website */
 body {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE10+/Edge */
-  user-select: none;         /* Standard */
+  /* -webkit-user-select: none; /* Safari */
+  /* -moz-user-select: none;    /* Firefox */
+  /* -ms-user-select: none;     /* IE10+/Edge */
+  /* user-select: none;         /* Standard */
 }
 
 /* Pengecualian: Biarkan user bisa ngetik di kolom pencarian/input */
-input, textarea {
+input,
+textarea {
   -webkit-user-select: auto;
   user-select: auto;
 }
@@ -108,10 +116,42 @@ input, textarea {
 /* .vp-doc adalah class pembungkus konten artikel di VitePress */
 .vp-doc p {
   text-align: justify;
-  
+
   /* Opsional: Mengaktifkan pemenggalan kata otomatis agar spasi tidak bolong-bolong */
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
-  hyphens: auto; 
+  hyphens: auto;
+}
+
+/* Membuat teks di dalam kurung siku menjadi transparan 50% */
+.bracket-dim {
+  opacity: 0.5;
+}
+
+.mjx-container {
+  overflow-x: auto;
+  /* Sembunyikan untuk Firefox */
+  scrollbar-width: none;
+  /* Sembunyikan untuk Chrome, Safari, dan Edge */
+  -ms-overflow-style: none;
+}
+
+.mjx-container[display="true"] {
+  margin: 1.5rem 0;
+  padding: 1rem 0; /* Padding atas bawah saja, jangan kiri kanan */
+  overflow: visible !important;
+}
+
+/* Hanya paragraf pertama setelah heading H1 atau H2 */
+.vp-doc h1 + p::first-letter,
+.vp-doc h2 + p::first-letter {
+  float: left;
+  font-size: 3.5em; /* Ukuran huruf */
+  line-height: 0.8; /* Mengatur posisi vertikal */
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  font-weight: bold;
+  color: var(--vp-c-brand); /* Mengikuti warna tema utama VitePress */
 }

@@ -9,11 +9,11 @@ hero:
     src: https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=G0SDNyUAAAAJ&citpid=1
     alt: Profile Picture
   actions:
-    - theme: brand
-      text: Materi Perkuliahan
-      link: /book-ppp/v-1-0/bab-10/0.html
+    # - theme: brand
+    #   text: Materi Perkuliahan
+    #   link: /book-ppp/v-1-0/bab-10/0.html
     - theme: alt
-      text: Publikasi Riset
+      text: Riset
       link: /research-codesearch/introduction.html
 
 features:

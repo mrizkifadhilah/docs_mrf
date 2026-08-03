@@ -42,7 +42,6 @@ export default [
       { text: "Bab 12.1", link: "/book-bdd/v-1-0/bab-12/1" },
       { text: "Bab 12.2", link: "/book-bdd/v-1-0/bab-12/2" },
       { text: "Bab 12.3", link: "/book-bdd/v-1-0/bab-12/3" },
-      { text: "Bab 12.4", link: "/book-bdd/v-1-0/bab-12/4" },
       { text: "Bab 12.z", link: "/book-bdd/v-1-0/bab-12/z" },
     ],
   },

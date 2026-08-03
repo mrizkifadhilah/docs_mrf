@@ -10,9 +10,70 @@ export default defineConfig({
   // Aktifkan MathJax untuk rumus matematika riset
   markdown: {
     math: true,
+    config: (md) => {
+      // Rule untuk menangkap bracket dan membungkusnya dengan span
+      md.inline.ruler.after('text', 'bracket_opacity', (state, silent) => {
+        const max = state.posMax;
+        const start = state.pos;
+
+        // Cek karakter pembuka '['
+        if (state.src.charCodeAt(start) !== 91) return false;
+
+        let level = 1;
+        let pos = start + 1;
+
+        // Cari pasangan penutup ']'
+        while (pos < max) {
+          const code = state.src.charCodeAt(pos);
+          if (code === 91) level++;
+          if (code === 93) {
+            level--;
+            if (level === 0) break;
+          }
+          pos++;
+        }
+
+        if (level !== 0 || silent) return false;
+
+        // --- PEMBUATAN TOKEN ---
+        
+        // 1. Token pembuka span
+        const tokenOpen = state.push('span_open', 'span', 1);
+        tokenOpen.attrs = [['class', 'bracket-dim']];
+
+        // 2. Tandai posisi awal setelah '['
+        state.pos++; 
+        
+        // 3. Tambahkan '[' sebagai teks manual (opsional, jika ingin kurungnya ikut redup)
+        const tOpen = state.push('text', '', 0);
+        tOpen.content = '[';
+
+        // 4. Perintahkan markdown-it untuk memproses konten di dalam bracket
+        // Kita gunakan tokenize untuk memproses konten inline (bold, italic, dll)
+        const oldPosMax = state.posMax;
+        state.posMax = pos;
+        state.md.inline.tokenize(state);
+        state.posMax = oldPosMax;
+
+        // 5. Tambahkan ']' sebagai teks manual
+        const tClose = state.push('text', '', 0);
+        tClose.content = ']';
+
+        // 6. Token penutup span
+        state.push('span_close', 'span', -1);
+
+        // 7. Geser posisi state ke setelah ']'
+        state.pos = pos + 1;
+        return true;
+      });
+    }
   },
 
   themeConfig: {
+    outline: {
+      level: [2, 3], // Ini akan menampilkan h1, h2, dan h3
+      label: 'On this page' // Opsional: mengubah teks judul sidebar
+    },
     nav: [
       // { text: 'Home', link: '/' },
       // { text: 'Metodologi', link: '/methodology/' },
